@@ -59,6 +59,9 @@ timestamp = current_time.strftime('%Y-%m-%d %H:%M:%S')
 # link_urls リストをdfに変換
 df = pd.DataFrame(link_urls, columns=['Bukken_URL','Kankyo_url'])
 
+# 'Bukken_URL' カラムの重複を削除
+df = df.drop_duplicates(subset=['Bukken_URL'])
+
 df['Timestamp'] = timestamp
 
 # Google APIへのアクセスにはOAuth 2.0という認証プロトコルが使用されており、scope呼ばれる権限の範囲を使ってアクセスを制御
